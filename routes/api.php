@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\TerrenoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/terrenos', [
     TerrenoController::class,
     'listApi'
+]);
+
+Route::get('/categorias', [
+    CategoriaController::class,
+    'getAll',
+]);
+
+Route::get('/categorias/:id', [
+    CategoriaController::class,
+    'getById',
 ]);
