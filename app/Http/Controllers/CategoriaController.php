@@ -16,4 +16,28 @@ class CategoriaController extends Controller
     {
         return Categoria::find($id); 
     }
+
+    public function insert(Request $request)
+    {
+        // return Categoria::create($request->all());
+
+        $data = Categoria::create([
+            'nome' => $request->nome, // $request->get('nome')
+            'descricao' => $request->descricao,
+        ]);
+
+        return $data;
+    }
+
+    public function update(Request $request, $id)
+    {
+
+    }
+
+    public function remove($id) 
+    {
+        Categoria::find($id)->delete();
+
+        return [];
+    }
 }

@@ -25,12 +25,30 @@ Route::get('/terrenos', [
     'listApi'
 ]);
 
-Route::get('/categorias', [
-    CategoriaController::class,
-    'getAll',
-]);
+Route::prefix('categorias')->group(function () {
+    Route::get('', [
+        CategoriaController::class,
+        'getAll',
+    ]);
+    
+    Route::get('/{id}', [
+        CategoriaController::class,
+        'getById',
+    ]);
+    
+    Route::post('', [
+        CategoriaController::class,
+        'insert',
+    ]);
+    
+    Route::patch('/{id}', [
+        CategoriaController::class,
+        'update',
+    ]);
+    
+    Route::delete('/{id}', [
+        CategoriaController::class,
+        'remove',
+    ]);
+});
 
-Route::get('/categorias/:id', [
-    CategoriaController::class,
-    'getById',
-]);
